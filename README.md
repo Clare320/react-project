@@ -188,6 +188,7 @@ export default Hello
 ```tsx
 const [count, setCount] = useState<number>(0)
 ```
+第一个变量是状态，第二个变量是改变状态的函数。状态的每一次改变都会触发重渲染。
 
 ### useEffect
 
