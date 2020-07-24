@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.1",
     "@craco/craco": "^5.6.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -12,6 +13,7 @@
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/react-loadable": "^5.5.3",
+    "@types/react-router-dom": "^5.1.5",
     "ahooks": "^2.1.0",
     "antd": "^4.4.0",
     "axios": "^0.19.2",
@@ -21,13 +23,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "ts-import-plugin": "^1.6.6",
     "ts-loader": "^7.0.5",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "craco start -p 4000",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
