@@ -1,4 +1,4 @@
-import { HddTwoTone, CodeTwoTone, FundTwoTone, CrownTwoTone } from '@ant-design/icons'
+import { HddTwoTone, CodeTwoTone, FundTwoTone, CrownTwoTone, PieChartTwoTone } from '@ant-design/icons'
 import React, { ReactNode } from 'react'
 
 interface LJMenu {
@@ -34,13 +34,13 @@ const menus: LJMenu[] = [
         key: 'swift',
         title: 'Swift',
         icon: <CodeTwoTone />,
-        route: ''
+        route: '/language/swift'
       },
       {
         key: 'typescript',
         title: 'JS/TS',
         icon: <CodeTwoTone />,
-        route: ''
+        route: '/language/typescript'
       }
     ]
   },
@@ -53,7 +53,7 @@ const menus: LJMenu[] = [
         key: 'layout',
         title: '布局',
         icon: <CodeTwoTone />,
-        route: ''
+        route: '/layout'
       }
     ]
   },
@@ -66,7 +66,20 @@ const menus: LJMenu[] = [
         key: 'animation',
         title: '动画',
         icon: <CodeTwoTone />,
-        route: ''
+        route: '/animation'
+      }
+    ]
+  },
+  {
+    key: 'visualdata',
+    title: '可视化数据',
+    icon: <PieChartTwoTone />,
+    menus: [
+      {
+        key: 'antdbasic',
+        title: 'antd基础',
+        icon: <CodeTwoTone />,
+        route: '/antd/basic'
       }
     ]
   }

@@ -3,6 +3,7 @@ import React from 'react'
 import HomePage from 'pages/home'
 import SwiftPage from 'pages/language/swift'
 import TypeScriptPage from 'pages/language/typescript'
+import AntdBasicPage from 'pages/visualdata/antd/basic'
 
 interface LJRoute {
   name: string,
@@ -23,10 +24,15 @@ const routes: LJRoute[] = [
     component: <TypeScriptPage />,
   },
   {
+    name: 'AntdBasic',
+    path: '/antd/basic',
+    component: <AntdBasicPage />
+  },
+  {
     name: 'Home',
     path: '/',
     component: <HomePage />
-  }
+  },
 ]
 
 export default routes

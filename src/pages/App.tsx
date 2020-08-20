@@ -12,11 +12,12 @@ function App() {
   const history = useHistory()
 
   const handleMenuClick = ({ item, key, keyPath, domEvent }: ClickParam) => {
-    if (key === 'swift') {
-      history.push('/language/swift')
-    } else if (key === 'typescript') {
-      history.push('/language/typescript')
-    }
+    console.log('menu is ', key, keyPath)
+    history.push(key)
+  }
+
+  const handleSubMenuTitleClick = () => {
+
   }
 
   return (
@@ -31,12 +32,12 @@ function App() {
               menusConfig.map((item) => {
                 const { key, title, icon, menus } = item
                 return (
-                  <SubMenu key={key} title={title} icon={icon}>
+                  <SubMenu key={key} title={title} icon={icon} onTitleClick={handleSubMenuTitleClick} >
                     {
                       menus?.map((subItem) => {
                         const { key: subKey, title: subTitle, icon: subIcon, route } = subItem
                         return (
-                          <Menu.Item key={subKey}>
+                          <Menu.Item key={route}>
                             {subIcon}
                             {subTitle}
                           </Menu.Item>
@@ -55,7 +56,7 @@ function App() {
               {
                 routesConfig.map((item, index) => {
                   const { path, component } = item
-                  return <Route key={'route' + index} path={path} render={() => component} />
+                  return <Route key={'route' + index} path={path} render={() => component} exact={true} />
                 })
               }
             </Switch>

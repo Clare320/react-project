@@ -46,12 +46,12 @@ let direction = Direction.Up
 * 函数参数解构，类同对象解构
 
   ```tsx
-  interface Theme { 
+  interface Theme {
     theme: string,
     icons: number
   }
   const params: Theme = { theme: 'dark', icons: 100 }
-  const show = ({ theme, icons }: Theme) => { 
+  const show = ({ theme, icons }: Theme) => {
     console.log(`current theme is ${theme}, icons is ${icons}`)
   }
   ```
@@ -60,13 +60,13 @@ let direction = Direction.Up
 
 ```tsx
 const add = (a: number, b: number) => {
-	return a + b
+ return a + b
 }
 ```
 
 ```tsx
 function add(a: number, b: number) {
-	return a + b
+ return a + b
 }
 ```
 
@@ -78,20 +78,20 @@ function add(a: number, b: number) {
 
 ```ts
 const promise = new Promise((resolve, reject) => {
-	// 处理异步操作
-	const value = {}
-	const result = true
-	if (result) {
-		resolve(value)
-	} else {
-		reject()
-	}
+ // 处理异步操作
+ const value = {}
+ const result = true
+ if (result) {
+  resolve(value)
+ } else {
+  reject()
+ }
 })
 
 promise.then(value => {
-	// 处理resolve
+ // 处理resolve
 }, error => {
-	// 处理reject
+ // 处理reject
 })
 ```
 
@@ -141,11 +141,11 @@ interface Props {
 
 ```tsx
 interface Props {
-	name?: string
+ name?: string
 }
 
 const Hello: FC<Props> = ({ name = 'world' }) => (
-	<div>{name}</div>
+ <div>{name}</div>
 )
 ```
 
@@ -170,11 +170,11 @@ React建议不要创建自己的组件基类，在React组件中，代码重用�
 ```tsx
 import React, { FC } from 'react'
 
-interface HelloProps { 
+interface HelloProps {
   name: string
 }
 
-const Hello: FC<HelloProps> = ({ name }) => { 
+const Hello: FC<HelloProps> = ({ name }) => {
   return (
     <div>Hello {name}</div>
   )
@@ -188,15 +188,16 @@ export default Hello
 ```tsx
 const [count, setCount] = useState<number>(0)
 ```
+
 第一个变量是状态，第二个变量是改变状态的函数。状态的每一次改变都会触发重渲染。
 
 ### useEffect
 
 ```tsx
 useEffect(() => {
-	return () => {
-		//副作用清除
-	}
+ return () => {
+  //副作用清除
+ }
 }, [])
 ```
 
@@ -223,8 +224,6 @@ const cxt = useContext(context)
 
 使用`useContext`组件的上层没有找到对应context的Provider，就使用context的默认值。现在使用Mobx的时候不再需要提供Provider和inject store，直接将对应的store封到context里面，用useContext来获取。
 
-
-
 ## VS Code插件
 
 ES7 React/Redux/GraphQL/React-Native snippets -- 代码块，最常用的`tsrafce`用户片段指令。
@@ -241,5 +240,25 @@ ES7 React/Redux/GraphQL/React-Native snippets -- 代码块，最常用的`tsrafc
 
 [ahooks](https://ahooks.js.org/zh-CN/hooks/async)
 
+## 概念
 
+`React`只会在浏览器绘制后运行effects，大多数effects不会阻塞UI更新，Effect的清除同样会被延迟，上一次的Effect会在重新渲染后被清除。
 
+* React 渲染新UI
+* 浏览器绘制，屏幕更新
+* React清除上一次Effect
+* React运行新的Effect
+
+> 组件内每一个函数（包括事件处理函数，effects，定时器或者API调用）会捕获定义它们的那次渲染中的props和state
+
+当你向更新一个状态时，并且这个状态更新依赖于另一个状态的值时，你可能需要用useReducer去替换它们。
+
+当useEffect中使用到函数时
+
+1. 不复用时放到effect内部，
+2. 当函数没有使用组件内的任何值，应该放到函数组件外面去定义，然后在effects中使用
+3. 把函数包装成useCallback
+
+> useCallback 和 useMemo原理相同，分别把函数和对象进行一次依赖封装，依赖未改变时，返回值就
+
+effects涉及到竞态处理 用一个布尔值来处理。
