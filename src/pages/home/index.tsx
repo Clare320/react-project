@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
+import { Button } from 'antd'
 import axios from 'axios'
+import ReactMarkdown from 'react-markdown'
+
+
 interface Props {
 
 }
@@ -39,8 +43,20 @@ const HomePage = (props: Props) => {
     setData({ hits: [] })
   }
 
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    const reader = new FileReader()
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      const { result } = e.target as FileReader
+      console.log('file is ', result)
+    }
+    reader.readAsText(files![0])
+  }
+
   return (
     <>
+      <a onClick={() => { }}>收藏</a>
+      <br />
       <button onClick={handleClick}>Run</button>
       <button onClick={handleClearClick}>Clear</button>
       <ul>
@@ -52,8 +68,14 @@ const HomePage = (props: Props) => {
           ))
         }
       </ul>
+      <input type='file' onChange={handleFileInputChange} />
     </>
   )
 }
 
 export default HomePage
+
+/**
+ * 数据 -> Excel
+ * Excel -> 数据
+ */

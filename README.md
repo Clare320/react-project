@@ -262,3 +262,7 @@ ES7 React/Redux/GraphQL/React-Native snippets -- 代码块，最常用的`tsrafc
 > useCallback 和 useMemo原理相同，分别把函数和对象进行一次依赖封装，依赖未改变时，返回值就
 
 effects涉及到竞态处理 用一个布尔值来处理。
+
+## Q&A
+
+### named export 与 default export 
