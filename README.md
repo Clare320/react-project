@@ -263,6 +263,34 @@ ES7 React/Redux/GraphQL/React-Native snippets -- 代码块，最常用的`tsrafc
 
 effects涉及到竞态处理 用一个布尔值来处理。
 
-## Q&A
+## 发布
 
-### named export 与 default export 
+### 常规做法
+
+1. 执行`npm run build`，生成build目录
+2. 在项目根目录下执行`server -s build`
+
+> [serve - README](https://github.com/vercel/serve#readme)
+
+### Github Pages
+
+1. 安装`npm install --save gh-pages`
+2. 在`package.json`添加homepage以及 predeploy 和deploy scripts
+  
+  ```json
+   "homepage": "https://Clare320.github.io/react-project",
+   "scripts": {
+     "start": "PORT=4000 craco start",
+     "build": "craco build",
+     "test": "craco test",
+     "eject": "craco eject",
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d build"
+   },
+   ```  
+
+3. `npm run deploy`
+
+### CRA发布
+
+[发布](https://create-react-app.dev/docs/deployment/)
