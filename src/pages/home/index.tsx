@@ -3,7 +3,6 @@ import { Button } from 'antd'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 
-
 interface Props {
 
 }
@@ -25,7 +24,7 @@ const HomePage = (props: Props) => {
     }
 
     console.log('excute side effect ', reqCount)
-    async function fetchData() {
+    async function fetchData () {
       console.log('excute fetch data')
       const result = await axios(
         'https://hn.algolia.com/api/v1/search?query=redux'
